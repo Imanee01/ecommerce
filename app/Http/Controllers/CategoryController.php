@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -13,7 +15,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        // return view('products.index',[
+        //     'categories'=>Category::all(),
+        //     'products'=>Product::latest()->paginate(5),
+        // ]);
     }
 
     /**
@@ -43,9 +48,14 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
-        return view('categories.show');
+        return view('categories.show',[
+            
+                'categories'=>Category::all(),
+                'products'=>Product::latest()->paginate(5),
+            
+        ]);
     }
 
     /**

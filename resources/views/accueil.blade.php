@@ -1,11 +1,21 @@
 @extends('layouts.app')
-
+@section('hidden')
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Accueil</h1>
+        <p class="lead text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum delectus ad quae cumque voluptates dolorum, neque eveniet, placeat obcaecati magnam vel fugit nulla autem, mollitia consequuntur praesentium sit? Veniam, facere.</p>
+    </div>
+</section>
+@endsection
 @section('content')
-    <h1>Accueil</h1>
+   
     <div class="container">
         <div class="row">
             <div class="col">
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    
+                        {{-- @foreach ($products as $product) --}}
+                    
                     <ol class="carousel-indicators">
                         <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class=""></li>
                         <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class=""></li>
@@ -13,14 +23,17 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="https://dummyimage.com/855x365/55595c/fff" alt="First slide">
+                            
+                            <img class="d-block w-100" src="{{$rand->image}}" alt="First slide">
                         </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src="https://dummyimage.com/855x365/a30ca3/fff" alt="Second slide">
+                       
+                         <div class="carousel-item">
+                            <img class="d-block w-100" src="{{$rand2->image}}" alt="Second slide">
                         </div>
                         <div class="carousel-item active">
-                            <img class="d-block w-100" src="https://dummyimage.com/855x365/1443ff/fff" alt="Third slide">
-                        </div>
+                            <img class="d-block w-100" src="{{$rand3->image}}" alt="Third slide">
+                        </div> 
+                  
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -30,6 +43,7 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
+                         {{-- @endforeach   --}}
                 </div>
             </div>
             <div class="col-12 col-md-3">
@@ -37,16 +51,16 @@
                     <div class="card-header bg-success text-white text-uppercase">
                         <i class="fa fa-heart"></i> Coup de coeur
                     </div>
-                    <img class="img-fluid border-0" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
+                    <img class="img-fluid border-0" src="{{$rand->image}}" alt="Card image cap">
                     <div class="card-body">
-                        <h4 class="card-title text-center"><a href="product.html" title="View Product">Produit</a></h4>
-                        <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                        <h4 class="card-title text-center"><a href="product.html" title="View Product">{{$rand->name}}</a></h4>
+                        <p class="card-text">{{$rand->description}}</p>
                         <div class="row">
                             <div class="col">
-                                <p class="btn btn-danger w-100">99,00 €</p>
+                                <p class="btn btn-danger w-100">{{$rand->price}} €</p>
                             </div>
                             <div class="col">
-                                <a href="product.html" class="btn btn-success w-100">Voir</a>
+                                <a href="produits/{{$rand->id}}" class="btn btn-success w-100">Voir</a>
                             </div>
                         </div>
                     </div>
@@ -70,15 +84,18 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
+                        @foreach ($lasts as $last)
+                            
+                       
                         <div class="col-sm">
                             <div class="card">
-                                <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
+                                <img class="card-img-top" src="{{$last->image}}" alt="Card image cap">
                                 <div class="card-body">
-                                    <h4 class="card-title"><a href="product.html" title="View Product">Produit</a></h4>
-                                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                                    <h4 class="card-title"><a href="product.html" title="View Product">{{$last->name}}</a></h4>
+                                    <p class="card-text">{{$last->description}}</p>
                                     <div class="row">
                                         <div class="col">
-                                            <p class="btn btn-danger w-100">99,00 €</p>
+                                            <p class="btn btn-danger w-100">{{$last->price}} €</p>
                                         </div>
                                         <div class="col">
                                             <a href="cart.html" class="btn btn-success w-100">Ajouter</a>
@@ -87,57 +104,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm">
-                            <div class="card">
-                                <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title"><a href="product.html" title="View Product">Produit</a></h4>
-                                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                                    <div class="row">
-                                        <div class="col">
-                                            <p class="btn btn-danger w-100">99,00 €</p>
-                                        </div>
-                                        <div class="col">
-                                            <a href="cart.html" class="btn btn-success w-100">Ajouter</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm">
-                            <div class="card">
-                                <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title"><a href="product.html" title="View Product">Produit</a></h4>
-                                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                                    <div class="row">
-                                        <div class="col">
-                                            <p class="btn btn-danger w-100">99,00 €</p>
-                                        </div>
-                                        <div class="col">
-                                            <a href="cart.html" class="btn btn-success w-100">Ajouter</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm">
-                            <div class="card">
-                                <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title"><a href="product.html" title="View Product">Produit</a></h4>
-                                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                                    <div class="row">
-                                        <div class="col">
-                                            <p class="btn btn-danger w-100">99,00 €</p>
-                                        </div>
-                                        <div class="col">
-                                            <a href="cart.html" class="btn btn-success w-100">Ajouter</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                         @endforeach
                     </div>
                 </div>
             </div>
@@ -157,15 +124,18 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
+                        @foreach ($rands as $rand)
+                            {{--Quand model reviews fait : afficher par rapport aux reviews et non random  --}}
+                      
                         <div class="col-sm">
                             <div class="card">
-                                <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
+                                <img class="card-img-top" src="{{$rand->image}}" alt="Card image cap">
                                 <div class="card-body">
-                                    <h4 class="card-title"><a href="product.html" title="View Product">Produit</a></h4>
-                                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                                    <h4 class="card-title"><a href="product.html" title="View Product">{{$rand->name}}</a></h4>
+                                    <p class="card-text">{{$rand->description}}</p>
                                     <div class="row">
                                         <div class="col">
-                                            <p class="btn btn-danger w-100">99,00 €</p>
+                                            <p class="btn btn-danger w-100">{{$rand->price}} €</p>
                                         </div>
                                         <div class="col">
                                             <a href="cart.html" class="btn btn-success w-100">Ajouter</a>
@@ -173,58 +143,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm">
-                            <div class="card">
-                                <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title"><a href="product.html" title="View Product">Produit</a></h4>
-                                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                                    <div class="row">
-                                        <div class="col">
-                                            <p class="btn btn-danger w-100">99,00 €</p>
-                                        </div>
-                                        <div class="col">
-                                            <a href="cart.html" class="btn btn-success w-100">Ajouter</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm">
-                            <div class="card">
-                                <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title"><a href="product.html" title="View Product">Produit</a></h4>
-                                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                                    <div class="row">
-                                        <div class="col">
-                                            <p class="btn btn-danger w-100">99,00 €</p>
-                                        </div>
-                                        <div class="col">
-                                            <a href="cart.html" class="btn btn-success w-100">Ajouter</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm">
-                            <div class="card">
-                                <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title"><a href="product.html" title="View Product">Produit</a></h4>
-                                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                                    <div class="row">
-                                        <div class="col">
-                                            <p class="btn btn-danger w-100">99,00 €</p>
-                                        </div>
-                                        <div class="col">
-                                            <a href="cart.html" class="btn btn-success w-100">Ajouter</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </div> 
+                         @endforeach
                     </div>
                 </div>
             </div>

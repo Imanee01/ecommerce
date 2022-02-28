@@ -1,6 +1,14 @@
 @extends('layouts.app')
-
+@section('hidden')
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Produit</h1>
+        <p class="lead text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum delectus ad quae cumque voluptates dolorum, neque eveniet, placeat obcaecati magnam vel fugit nulla autem, mollitia consequuntur praesentium sit? Veniam, facere.</p>
+    </div>
+</section>
+@endsection
 @section('content')
+
 <div class="container">
     <div class="row">
         <div class="col">
@@ -57,16 +65,17 @@
             <div class="card bg-light mb-3">
                 <div class="card-header bg-success text-white text-uppercase">Dernier produit</div>
                 <div class="card-body">
-                    <img class="img-fluid" src="https://dummyimage.com/600x400/55595c/fff">
-                    <h5 class="card-title mt-3">Produit</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+                    <img class="img-fluid" src="{{$last->image}}">
+                    <h5 class="card-title mt-3">{{$last->name}}</h5>
+                    <p class="card-text">{{$last->description}}</p>
 
                     <div class="row">
                         <div class="col">
-                            <p class="btn btn-danger w-100">99,00 €</p>
+                            <p class="btn btn-danger w-100">{{$last->price}} €</p>
                         </div>
                         <div class="col">
-                            <a href="product.html" class="btn btn-success w-100">Voir</a>
+                            <a href="/produits/{{$last->id}}" class="btn btn-success w-100">Voir</a>
                         </div>
                     </div>
                 </div>

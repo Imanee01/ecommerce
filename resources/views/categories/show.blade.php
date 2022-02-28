@@ -1,5 +1,12 @@
 @extends('layouts.app')
-
+@section('hidden')
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Categories</h1>
+        <p class="lead text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum delectus ad quae cumque voluptates dolorum, neque eveniet, placeat obcaecati magnam vel fugit nulla autem, mollitia consequuntur praesentium sit? Veniam, facere.</p>
+    </div>
+</section>
+@endsection
 @section('content')
 <div class="container">
     <div class="row">

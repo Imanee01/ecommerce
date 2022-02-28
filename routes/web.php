@@ -3,8 +3,11 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Nette\Utils\Random;
+use Ramsey\Uuid\Generator\RandomLibAdapter;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +21,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('accueil');
+    return view('accueil',[
+    'rand' => Product::all()->random(),
+    'rand2' => Product::all()->random(),
+    'rand3' => Product::all()->random(),
+    'rands' => Product::all()->random(4),
+    'lasts'=>Product::all()->last()->take(4)->get(),
+    
+       
+    ]);
 });
 
 Route::get('/produits',[ProductController::class,'index']);

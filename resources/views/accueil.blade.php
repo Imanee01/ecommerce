@@ -50,6 +50,7 @@
                 <div class="card h-100">
                     <div class="card-header bg-success text-white text-uppercase">
                         <i class="fa fa-heart"></i> Coup de coeur
+                        {{-- AFFICHER LE BOOLEAN --}}
                     </div>
                     <img class="img-fluid border-0" src="{{$rand->image}}" alt="Card image cap">
                     <div class="card-body">
@@ -57,7 +58,7 @@
                         <p class="card-text">{{$rand->description}}</p>
                         <div class="row">
                             <div class="col">
-                                <p class="btn btn-danger w-100">{{$rand->price}} €</p>
+                                <p class="btn btn-danger w-100">{{$rand->Promo($rand->price,$rand->promotion)}} €</p>
                             </div>
                             <div class="col">
                                 <a href="produits/{{$rand->id}}" class="btn btn-success w-100">Voir</a>
@@ -95,7 +96,7 @@
                                     <p class="card-text">{{$last->description}}</p>
                                     <div class="row">
                                         <div class="col">
-                                            <p class="btn btn-danger w-100">{{$last->price}} €</p>
+                                            <p class="btn btn-danger w-100"> {{$last->Promo($last->price,$last->promotion)}}€</p>
                                         </div>
                                         <div class="col">
                                             <a href="cart.html" class="btn btn-success w-100">Ajouter</a>
@@ -135,7 +136,7 @@
                                     <p class="card-text">{{$rand->description}}</p>
                                     <div class="row">
                                         <div class="col">
-                                            <p class="btn btn-danger w-100">{{$rand->price}} €</p>
+                                            <p class="btn btn-danger w-100"> {{$rand->Promo($rand->price,$rand->promotion)}}€</p>
                                         </div>
                                         <div class="col">
                                             <a href="cart.html" class="btn btn-success w-100">Ajouter</a>

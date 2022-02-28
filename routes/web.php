@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
@@ -27,6 +28,7 @@ Route::get('/', function () {
     'rand3' => Product::all()->random(),
     'rands' => Product::all()->random(4),
     'lasts'=>Product::all()->last()->take(4)->get(),
+    // 'favorite'=>Product::all()->random(),
     
        
     ]);
@@ -41,7 +43,16 @@ Route::get('/categories/{category}',[CategoryController::class,'show']);
 
 Route::get('/contact',[ContactController::class,'index']);
 
+Route::get('/admin',[AdminProductController::class,'index']);
+Route::get('/admin/produits',[AdminProductController::class,'show']);
+Route::get('/admin/produits/creer',[AdminProductController::class,'create']);
+Route::post('/admin/produits/creer',[AdminProductController::class,'store']);
+Route::get('/admin/produits/{product}/modifier',[AdminProductController::class,'edit']);
+Route::get('/admin/produits/{product}/supprimer',[AdminProductController::class,'destroy']);
+
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+

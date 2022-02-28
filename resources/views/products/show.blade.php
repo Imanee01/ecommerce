@@ -32,8 +32,8 @@
         <div class="col-12 col-lg-6 add_to_cart_block">
             <div class="card bg-light mb-3">
                 <div class="card-body">
-                    <p class="price">{{$product->price}} €</p>
-                    <p class="price_discounted">149.90 €</p>
+                    <p class="price">{{$product->Promo($product->price,$product->promotion)}}</p>
+                    <p class="price_discounted">{{$product->price}} €</p>
                     <form method="get" action="cart.html">
                         <div class="mb-3">
                             <label for="colors">Couleur</label>

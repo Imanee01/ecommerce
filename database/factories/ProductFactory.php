@@ -22,10 +22,11 @@ class ProductFactory extends Factory
             // // 'slug'=>$this->faker->slug('name'),
             'description'=>$this->faker->text(300),
             'price'=>rand(10,100),
-            // // 'favorite'=>booleanValue(),
+            // 'favorite'=>$this->faker->boolean(),
             'image'=> $this ->faker->imageUrl(),
-            
+            // 'color'=>rand(),
             'promotion'=>rand(10,80),
+            
 
         ];
     }

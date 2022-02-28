@@ -20,13 +20,14 @@ return new class extends Migration
             $table->integer('price');
             // $table->string('slug')->unique();
           
-            // $table->boolean('favorite');
+            // $table->boolean('favorite')->nullable();
             // $table->text('colors');
             $table->string('image');
             $table->integer('promotion');
             // $table->foreignId('category_id')->nullable()->constrained();
             $table->timestamps();
         });
+        
     }
 
     /**

@@ -72,7 +72,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <p class="btn btn-danger w-100">{{$last->price}} €</p>
+                            <p class="btn btn-danger w-100">{{$last->Promo($last->price,$last->promotion)}} €</p>
                         </div>
                         <div class="col">
                             <a href="/produits/{{$last->id}}" class="btn btn-success w-100">Voir</a>
@@ -96,7 +96,7 @@
                            
                             <div class="row">
                                 <div class="col">
-                                    <p class="btn btn-danger w-100">{{$product->price}} € </p>
+                                    <p class="btn btn-danger w-100">{{$product->Promo($product->price,$product->promotion)}} € </p>
                                 </div>
                                 <div class="col">
                                     <a href="#" class="btn btn-success w-100">Ajouter</a>

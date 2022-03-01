@@ -92,18 +92,18 @@ class AdminProductController extends Controller
     {
         request()->validate([
             'name'=>'required|min:3',
-            'description'=>'required|min:10',
-            'price'=>'required|numeric|min:99|max:1000',
-            'image'=> 'required|max:1024', 
-            'promotion'=>'required|numeric|min:10|max:80',
+            // 'description'=>'required|min:10',
+            // 'price'=>'required|numeric|min:99|max:1000',
+            // 'image'=> 'required|max:1024', 
+            // 'promotion'=>'required|numeric|min:10|max:80',
         ]);
         
         $product->update([
             'name'=> request('name'),
-            'description'=>request('description'),
-            'price'=>request('price'),
-            'image'=>'/storage/'.request('image')->store('images','public'),
-            'promotion'=>request('promotion'),
+            // 'description'=>request('description'),
+            // 'price'=>request('price'),
+            // 'image'=>'/storage/'.request('image')->store('images','public'),
+            // 'promotion'=>request('promotion'),
         ]);
         return redirect('/admin/produits')->with('status','La produit '.$product->name.' a été Modifier.'); 
     
@@ -118,6 +118,6 @@ class AdminProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect('/admin/produits')->with('status','La catégorie '.$product->name.' a été supprimée.');
+        return redirect('/admin/produits')->with('status','Le produit '.$product->name.' a été supprimée.');
     }
 }

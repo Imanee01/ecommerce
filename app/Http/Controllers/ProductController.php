@@ -19,6 +19,9 @@ class ProductController extends Controller
             'products'=>Product::latest('created_at')->paginate(6),
             'categories'=>Category::all(),
             'last' => Product::all()->last(),
+            'favorite'=>Product::inRandomOrder()->where('favorite','1')->first(),
+            // 'slug'=>Product::slug('name','-')
+
             
         ]);
            

@@ -50,18 +50,20 @@
                 <div class="card h-100">
                     <div class="card-header bg-success text-white text-uppercase">
                         <i class="fa fa-heart"></i> Coup de coeur
-                        {{-- AFFICHER LE BOOLEAN --}}
+                        
                     </div>
-                    <img class="img-fluid border-0" src="{{$rand->image}}" alt="Card image cap">
+                   
+                    <img class="img-fluid border-0" src="{{$favorite->image}}" alt="Card image cap">
                     <div class="card-body">
-                        <h4 class="card-title text-center"><a href="product.html" title="View Product">{{$rand->name}}</a></h4>
-                        <p class="card-text">{{$rand->description}}</p>
+                        <h4 class="card-title text-center"><a href="product.html" title="View Product">{{$favorite->name}}</a></h4>
+                        <p class="card-text">{{$favorite->description}}</p>
                         <div class="row">
                             <div class="col">
-                                <p class="btn btn-danger w-100">{{$rand->Promo($rand->price,$rand->promotion)}} €</p>
+                                <p class="btn btn-danger w-100">{{$favorite->Promo($favorite->price,$favorite->promotion)}} €</p>
                             </div>
                             <div class="col">
-                                <a href="produits/{{$rand->id}}" class="btn btn-success w-100">Voir</a>
+                                <a href="produits/{{$favorite->id}}" class="btn btn-success w-100">Voir</a> 
+                                
                             </div>
                         </div>
                     </div>

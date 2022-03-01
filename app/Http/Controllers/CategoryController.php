@@ -51,9 +51,12 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         return view('categories.show',[
-            
+                 'category'=>$category,
                 'categories'=>Category::all(),
                 'products'=>Product::latest()->paginate(5),
+                'last' => Product::all()->last(),
+               
+                // 'category'=>Category::all(),
             
         ]);
     }

@@ -28,7 +28,8 @@ Route::get('/', function () {
     'rand3' => Product::all()->random(),
     'rands' => Product::all()->random(4),
     'lasts'=>Product::all()->last()->take(4)->get(),
-    // 'favorite'=>Product::all()->random(),
+    'favorite'=>Product::inRandomOrder()->where('favorite','1')->first(),
+   
     
        
     ]);
@@ -48,7 +49,8 @@ Route::get('/admin/produits',[AdminProductController::class,'show']);
 Route::get('/admin/produits/creer',[AdminProductController::class,'create']);
 Route::post('/admin/produits/creer',[AdminProductController::class,'store']);
 Route::get('/admin/produits/{product}/modifier',[AdminProductController::class,'edit']);
-Route::get('/admin/produits/{product}/supprimer',[AdminProductController::class,'destroy']);
+Route::put('/admin/produits/{product}',[AdminProductController::class,'update']);
+Route::delete('/admin/produits/{product}',[AdminProductController::class,'destroy']);
 
 
 Auth::routes();

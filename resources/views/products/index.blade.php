@@ -57,7 +57,7 @@
                 @foreach ($categories as $category)
                     
                 <ul class="list-group category_block">
-                    <li class="list-group-item"><a href="/categories/{{$category->id}}">{{$category->name}}</a></li>
+                    <li class="list-group-item"><a href="/categories/{{$category->id}}">{{$category->name}} ({{$category->products->count()}} produits)</a></li>
                     
                 </ul>
                 @endforeach

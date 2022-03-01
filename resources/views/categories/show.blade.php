@@ -56,7 +56,7 @@
                 @foreach ($categories as $category)
                     
                 <ul class="list-group category_block">
-                    <li class="list-group-item"><a href="/categories/{{$category->id}}">{{$category->name}}</a></li>
+                    <li class="list-group-item"><a href="/categories/{{$category->id}}">{{$category->name}} ({{$category->products->count()}} produits) </a></li>
                     
                 </ul>
                 @endforeach
@@ -64,34 +64,34 @@
             <div class="card bg-light mb-3">
                 <div class="card-header bg-success text-white text-uppercase">Dernier produit</div>
                 <div class="card-body">
-                    <img class="img-fluid" src="https://dummyimage.com/600x400/55595c/fff">
-                    <h5 class="card-title mt-3">Produit</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+                    <img class="img-fluid" src="{{$last->image}}">
+                    <h5 class="card-title mt-3">{{$last->name}}</h5>
+                    <p class="card-text">{{$last->description}}</p>
 
                     <div class="row">
                         <div class="col">
-                            <p class="btn btn-danger w-100">99,00 €</p>
+                            <p class="btn btn-danger w-100">{{$last->Promo($last->price,$last->promotion)}} €</p>
                         </div>
                         <div class="col">
-                            <a href="product.html" class="btn btn-success w-100">Voir</a>
+                            <a href="/produits/{{$last->id}}" class="btn btn-success w-100">Voir</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-       
             
        
         <div class="col">
            
             <div class="row">
-              @foreach ($products as $product)  
+              @foreach ($category->products as $product)  
                 <div class="col-12 col-md-6 col-lg-4 mb-4">
                       
                         <img class="img-fluid" src={{$product->image}} alt={{$product->name}}>
                         <div class="card-body">
                             <h4 class="card-title"><a href={{$product->name}} title="View Product">{{$product->name}}</a></h4>
-                            {{-- <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p> --}}
+                            
                             <div class="row">
                                 <div class="col">
                                     <p class="btn btn-danger w-100">{{$product->Promo($product->price,$product->promotion)}}</p>
@@ -110,9 +110,9 @@
                     </div>
                    
                 </div> 
-                <div>
+                {{-- <div>
                     {{$products->links()}}
-                </div>
+                </div> --}}
               
         </div>
         

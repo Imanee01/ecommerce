@@ -30,13 +30,17 @@
                     <td>{{$product->name}}</td>
                     <td>{{$product->price}} €</td>
                     <td>
-                        <a class="btn btn-primary" href="admin//produits/{{$product->id}}/modifier">Modifier</a>
-                        <form class="d-inline" action="/produits/{{$product->id}}" method="post">
-                            @csrf @method('delete')
+                        <a class="btn btn-primary" href="/admin/produits/{{$product->id}}/modifier">Modifier</a>
+
+                        <form class="d-inline" action="/admin/produits/{{$product->id}}" method="post">
+                            @csrf 
+                            @method('delete')
                            <button class="btn btn-danger" onclick="return confirm('Voulez vous supprimer le produit ?')">Supprimer</button>
                        </form>
                     </td>
-                </tr> @endforeach
+                  
+                </tr>
+                  @endforeach 
             </tbody>
         </table>
     </div>

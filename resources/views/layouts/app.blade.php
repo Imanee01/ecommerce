@@ -102,6 +102,12 @@
                     <p class="lead text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum delectus ad quae cumque voluptates dolorum, neque eveniet, placeat obcaecati magnam vel fugit nulla autem, mollitia consequuntur praesentium sit? Veniam, facere.</p>
                 </div>
             </section> --}}
+            
+            @if (session('status'))
+            <div class="alert alert-success">
+               {{ session('status') }}
+              </div>
+           @endif
         
             @yield('content')
             @yield('content2')

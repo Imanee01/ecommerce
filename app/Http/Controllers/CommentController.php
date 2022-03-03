@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,17 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('products.index',[
-            'products'=>Product::latest('created_at')->paginate(6),
-            'categories'=>Category::all(),
-            'last' => Product::all()->last(),
-            'favorite'=>Product::inRandomOrder()->where('favorite','1')->first(),
-            // 'slug'=>Product::slug('name','-')
-
-            
-        ]);
-           
-        
+        // return view('products.show');
     }
 
     /**
@@ -36,7 +25,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        // return view('products.show');
     }
 
     /**
@@ -47,7 +36,21 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([    
+            'name'=>'required|min:3',
+            'message'=>'required|min:10',
+            'note'=>'required|numeric|min:0|max:5',
+            
+            
+        ]);
+        Comment::create([
+            'name'=> request('name'),
+            'message'=>request('message'),
+            'note'=>request('note'),
+            
+        ]);
+
+        return redirect('/produits')->with('status','Le message a été envoyé.');
     }
 
     /**
@@ -56,14 +59,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show()
     {
-        return view('products.show',[
-            'product'=> $product,
-            'products'=>Product::all(),
-            'category'=>Category::all(),
-            'comments'=>Comment::all(),
-        ]);
+       
     }
 
     /**

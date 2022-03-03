@@ -18,13 +18,14 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->integer('price');
-            // $table->string('slug');
+            $table->string('slug');
         //   ->unique()
             $table->boolean('favorite');
             // $table->text('colors');
             $table->string('image');
             $table->integer('promotion');
             $table->foreignId('category_id')->nullable();
+            // $table->foreignId('comment_id');
             $table->timestamps();
         });
         

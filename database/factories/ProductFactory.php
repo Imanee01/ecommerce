@@ -22,15 +22,18 @@ class ProductFactory extends Factory
 
         return [
             'name'=>$this->faker->sentence(2),
-            // 'slug'=>$this->faker->slug('name'),
+            'slug'=>$this->faker->slug(1),
             'description'=>$this->faker->text(300),
             'price'=>rand(10,100),
             'favorite'=>$this->faker->boolean(),
             'image'=> $this ->faker->imageUrl(),
             'promotion'=>rand(10,80),
+            // 'colors' => $this->faker->randomElements(['Rouge', 'Vert', 'Bleu'], rand(0, 2)),
             //  $category=Product::pluck('id')->all(),
             // 'categorie_id'=>$this->faker->randomElement($category),
-            'category_id'=>rand(0,4)
+            'category_id'=>rand(0,4),
+            // 'comment_id'=>rand(0,9),
+            
 
         ];
     }

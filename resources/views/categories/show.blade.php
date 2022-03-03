@@ -53,10 +53,10 @@
             </div>
             <div class="card bg-light mb-3">
                 <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Catégories</div>
-                @foreach ($categories as $category)
+                @foreach ($categories as $categorie)
                     
                 <ul class="list-group category_block">
-                    <li class="list-group-item"><a href="/categories/{{$category->id}}">{{$category->name}} ({{$category->products->count()}} produits) </a></li>
+                    <li class="list-group-item"><a href="/categories/{{$categorie->id}}">{{$categorie->name}} ({{$categorie->products->count()}} produits) </a></li>
                     
                 </ul>
                 @endforeach

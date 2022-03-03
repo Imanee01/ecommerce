@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CommentController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -40,9 +41,17 @@ Route::get('/produits',[ProductController::class,'index']);
 // verifier le ($product)
 Route::get('/produits/{product}',[ProductController::class,'show']);
 
+// Route::get('comments',[CommentController::class,'index']);
+// Route::get('/comments/store',[CommentController::class,'show']);
+// Route::get('/comments/store',[CommentController::class,'index']);
+// Route::get('/produits/creer',[CommentController::class,'create']);
+Route::post('/produits/{product}/creer',[CommentController::class,'store']);
+
 Route::get('/categories/{category}',[CategoryController::class,'show']);
 
 Route::get('/contact',[ContactController::class,'index']);
+
+
 
 Route::get('/admin',[AdminProductController::class,'index']);
 Route::get('/admin/produits',[AdminProductController::class,'show']);
@@ -51,6 +60,7 @@ Route::post('/admin/produits/creer',[AdminProductController::class,'store']);
 Route::get('/admin/produits/{product}/modifier',[AdminProductController::class,'edit']);
 Route::put('/admin/produits/{product}',[AdminProductController::class,'update']);
 Route::delete('/admin/produits/{product}',[AdminProductController::class,'destroy']);
+
 
 
 Auth::routes();

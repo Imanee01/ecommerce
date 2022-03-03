@@ -7,7 +7,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-                    <li class="breadcrumb-item"><a href="/categories/">Catégorie</a></li>
+                    <li class="breadcrumb-item"><a href="/categories">Catégorie</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Produit</li>
                 </ol>
             </nav>
@@ -128,22 +128,26 @@
             <div class="card border-light mb-3">
                 <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-comment"></i> Avis</div>
                 <div class="card-body">
+                    @foreach ($comments as $comment)
+                        
+                    
                     <div class="review">
                         <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                        <meta itemprop="datePublished" content="01-01-2016">28 mars 2019
+                        <meta itemprop="datePublished" content="01-01-2016">{{$comment->created_at->translatedformat('d M Y')}}
 
+                        <span class="fa fa-star">{{$comment->note}}/5</span>
+                        {{-- <span class="fa fa-star"></span>
                         <span class="fa fa-star"></span>
                         <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        par Paul Smith
+                        <span class="fa fa-star"></span> --}}
+                        {{$comment->name}}
                         <p class="blockquote">
-                            </p><p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                            </p><p class="mb-0">{{$comment->message}}</p>
                         <p></p>
                         <hr>
                     </div>
-                    <div class="review">
+                    @endforeach
+                    {{-- <div class="review">
                         <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
                         <meta itemprop="datePublished" content="01-01-2016">29 mars 2019
 
@@ -157,12 +161,23 @@
                             </p><p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
                         <p></p>
                         <hr>
+                    </div> --}}
+                       
+                    @if ($errors->any()) 
+                     <div class="alert alert-danger">
+                         <ul class="mb-0 list-unstyled">
+                            @foreach ($errors->all() as $error)
+                                <li> {{$error}} </li>
+                            @endforeach
+                        </ul>
                     </div>
-
-                    <form action="" method="post">
+                    
+                     @endif
+                    <form action="/produits/creer" method="post" enctype="multipart/form-data">
+                        @csrf
                         <div class="mb-3">
                             <label for="name">Nom</label>
-                            <input type="text" name="name" class="form-control" id="name">
+                            <input type="text" name="name" class="form-control" id="name" value="{{old('name')}}">
                         </div>
                         <div class="mb-3">
                             <label for="note">Note</label>
@@ -177,7 +192,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="message">Message</label>
-                            <textarea name="message" id="message" class="form-control"></textarea>
+                            <textarea name="message" id="message" class="form-control">{{old('message')}}</textarea>
                         </div>
 
                         <button class="btn btn-primary">Envoyer</button>
